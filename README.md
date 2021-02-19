@@ -1,4 +1,4 @@
-# AREP LABORATORIO 2 - INTRODUCCIÓN AL DISEÑO DE SISTEMAS INFORMÁTICOS
+# AREP LABORATORIO 3 - TALLER CLIENTES Y SERVICIOS
 
 se realizo el taller propuesto de "INTRODUCCIÓN AL DISEÑO DE SISTEMAS INFORMÁTICOS" con ayuda del lavoratorio anteriormente realizado "Introducción a los sistemas complejos, JAVA,MVN y GIT" utilizando listas enlazadas
 
@@ -8,18 +8,18 @@ Los prerrequisitos que manejaremos para lograr con exito el desarrollo del labor
 - Maven
 - Git  
 - Java
-- SparkWeb
-- Heroku
+- Heroku CLI
+- Postgres
 
 ### Ejecucion e instalacion
 se debe clonar el proyecto con el siguiente comando:
 
 ```
-git clone https://github.com/memo1019/miprimera-app
+git clone https://github.com/memo1019/LAB3-AREP
 ```
 luego ingresaremos a la carpeta dede el cmd o la consola:
 ```
-cd /Lab02-AREP
+cd /Lab03-AREP
 ```
 Finalmente coonstruiremos y compilaremos el proyecto para asi poder ejecutarlo.
 ```
@@ -37,11 +37,10 @@ las podra ver corriendo con el comando
 Para correr el programa tenemos que ejecutar el siguiente comando :
 
 ```
-java -cp target/classes;target/dependency/* edu.escuelaing.arep.Calculadora.SparkWeb.SparkWebApp
+>java -cp target/classes;target/dependency/* edu.co.escuelaing.nanosparkweb.demo.NanoSparkWebDemo
 ```
-Luego vaya a http://localhost:4567/operacion para ver el programa desplegado localmente
+Luego vaya a http://localhost:4567/misitio/index.html para ver el programa desplegado localmente
 
-Ponga sus casos de prueba (Sólo recibirá números enteros y Float(.) separados por coma "," en otros casos el programa le mostrará y error de entrada en su navegador.
 
 La aplicación se despliega con heroku y el enlace está en la parte inferior de este documento (botón Heroku)
 
@@ -66,7 +65,7 @@ si desea ver el javadoc se encuentra en el directorio
 /target/site
 ```
 
-Podemos ver la descripcion del proyecto en este pdf [file](/src/site/Resources/lab2.pdf) mostrando el diseño y la estructura del proyecto
+Podemos ver la descripcion del proyecto en este pdf [file](/src/site/Resources/lab3.pdf) mostrando el diseño y la estructura del proyecto
 
 ## Construido con
 
@@ -76,7 +75,7 @@ Podemos ver la descripcion del proyecto en este pdf [file](/src/site/Resources/l
 
 ## Despliegue en Heroku
 
-[![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://blooming-mesa-19180.herokuapp.com/operacion)
+[![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://https://shielded-fjord-72615.herokuapp.com/Apps/htmlShow)
 
 
 ## Autor
