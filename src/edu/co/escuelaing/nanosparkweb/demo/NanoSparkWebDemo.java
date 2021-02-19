@@ -1,10 +1,11 @@
 package edu.co.escuelaing.nanosparkweb.demo;
 
-import static edu.co.escuelaing.nanosparkweb.NanoSpark.*;
+import java.sql.SQLException;
 
+import static edu.co.escuelaing.nanosparkweb.NanoSpark.*;
 public class NanoSparkWebDemo {
 
-    public static void main(String [] args ){
+    public static void main(String [] args ) throws SQLException {
         get("/hello",(req,res)->
                 "<!DOCTYPE html>\n"
                 + "<html>\n"
