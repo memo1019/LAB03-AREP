@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        function Respuesta() {
+            axios.post('https://blooming-mesa-19180.herokuapp.com/operacion', {
+                value: toList()
+            }).then(function f (res){
+                document.getElementById("resultado").innerHTML = "La Media es: "+ res.data.Media+"<br>"+
+                    "La Desviacion Estandar es: "+res.data.Desviacion_estandar;
+            })
+        }
+
+        function toList() {
+            var data = document.getElementById("list").value
+            return data.split(" ").map(Number);
+        }
+    </script>
+</head>
+<body >
+    <font color="#000000" face="Comic Sans MS">
+
+        <h2>Calculadora de Media y Desviacion Estandar</h2>
+
+        Lista de numeros:<br>
+        <input type="text" id="list">
+        <br>
+        <input type="submit" value="Submit" onclick="Respuesta()">
+        <br>
+        Insertar los numeros con espacio en blanco
+        <br>
+        <p id="resultado"></p>
+    </font>
+</body>
+</html>
