@@ -39,7 +39,7 @@ Para correr el programa tenemos que ejecutar el siguiente comando :
 ```
 >java -cp target/classes;target/dependency/* edu.co.escuelaing.nanosparkweb.demo.NanoSparkWebDemo
 ```
-Luego vaya a http://localhost:4567/misitio/index.html para ver el programa desplegado localmente
+Luego vaya a http://localhost:4567/arep/operacion.html para ver el programa desplegado localmente
 
 
 La aplicación se despliega con heroku y el enlace está en la parte inferior de este documento (botón Heroku)
@@ -75,7 +75,7 @@ Podemos ver la descripcion del proyecto en este pdf [file](/src/site/Resources/l
 
 ## Despliegue en Heroku
 
-[![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://https://shielded-fjord-72615.herokuapp.com/Apps/htmlShow)
+[![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://https://shielded-fjord-72615.herokuapp.com/arep/operacion.html)
 
 
 ## Autor
