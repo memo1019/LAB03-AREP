@@ -15,7 +15,7 @@ Busqueda = (function () {
     function VistaBusqueda(data){
         for (let i = 0; i < data.split("%").length; i++) {
             data.split("%")[i].split("#");
-            $("#Busqueda").append("<li class='temporal'>"+data.split("%")[i].split("#")[0]+"<li/>")
+            $("#Busqueda").append("<li class='temporal'>"+data.split("%")[i].split("#")[0]+" "+data.split("%")[i].split("#")[1])
         }
 
     }
