@@ -75,7 +75,7 @@ Podemos ver la descripcion del proyecto en este pdf [file](/src/site/Resources/l
 
 ## Despliegue en Heroku
 
-[![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://https://shielded-fjord-72615.herokuapp.com/arep/operacion.html)
+[![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://shielded-fjord-72615.herokuapp.com/escuelaing/operacion.html)
 
 
 ## Autor
