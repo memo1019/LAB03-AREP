@@ -20,6 +20,7 @@ public class ConexionJDBCBaseDeDatos {
      * @return - conexion.
      */
     public static Connection getConexion() { return conexion; }
+    public  Connection getConexion3() { return conexion; }
 
     private static ConexionJDBCBaseDeDatos instance = new ConexionJDBCBaseDeDatos();
     private static Connection conexion;
