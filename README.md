@@ -1,6 +1,6 @@
 # AREP LABORATORIO 3 - TALLER CLIENTES Y SERVICIOS
 
-se realizo el taller propuesto de "INTRODUCCIÓN AL DISEÑO DE SISTEMAS INFORMÁTICOS" con ayuda del lavoratorio anteriormente realizado "Introducción a los sistemas complejos, JAVA,MVN y GIT" utilizando listas enlazadas
+se realizo el Aplicativo Web diseñado en Java con el objetivo de crear un servidor HTTP, y un framework que reemplace al framework Spark, este servidor soporta peticiones get por medio de funciones lambda, para esta aplicación el servidor devuelve archivos estáticos para ser visualizados por el usuario.
 
 ### PREREQUISITOS
 
