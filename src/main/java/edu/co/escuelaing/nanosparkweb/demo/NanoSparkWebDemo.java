@@ -6,10 +6,12 @@ import edu.co.escuelaing.entidades.Busqueda;
  * @author Luis Benavidez con modificacion de Guillermo Castro
  * */
 
+import java.sql.SQLException;
+
 import static edu.co.escuelaing.nanosparkweb.NanoSpark.*;
 public class NanoSparkWebDemo {
 
-    public static void main(String [] args )  {
+    public static void main(String [] args )  throws SQLException {
         get("/Busqueda",(req , res) -> Datos());
         startServer();
     }
