@@ -1,21 +1,41 @@
 package edu.co.escuelaing.nanosparkweb;
 
-import com.sun.deploy.net.HttpRequest;
-import com.sun.deploy.net.HttpResponse;
 import edu.co.escuelaing.httpserver.Handler;
 import edu.co.escuelaing.httpserver.HttpServer;
 
 import java.io.IOException;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiFunction;
-import java.util.function.Supplier;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+/**
+ * @author Luis Benavidez con modificacion de Guillermo Castro
+ * */
 public class NanoSparkServer implements Handler<String> {
+    private final String BadRequest = "HTTP/1.1 400 Not Found\r\n"
+            + "Content-Type: text/html\r\n"
+            + "\r\n"
+            + "<!DOCTYPE html>\n"
+            + "<html>\n"
+            + "<head>\n"
+            + "<meta charset=\"UTF-8\">\n"
+            + "<title>Error 404</title>\n"
+            + "</head>\n"
+            + "<body>\n"
+            + "<h1>Error 404</h1>\n"
+            + "<h3>URI not Found</h3>\n"
+            + "</body>\n"
+            +"<html>\n";
+
+    private final String OkHeader = "HTTP/1.1 200 OK\r\n"
+            + "Content-Type: text/html\r\n"
+            + "\r\n";
 
     private static NanoSparkServer _theinstance =new NanoSparkServer();
+
     private HttpServer hserver= new HttpServer();
 
 
@@ -41,7 +61,11 @@ public class NanoSparkServer implements Handler<String> {
         bodyMap.put(path,bifunction);
     }
     public String getValue(String path,HttpRequest req,HttpResponse res){
-        return bodyMap.get(path).apply(req,res);
+        if (bodyMap.containsKey(path)){
+            return OkHeader + bodyMap.get(path).apply(req , res);
+        }else {
+            return BadRequest;
+        }
     }
 
     @Override

@@ -1,8 +1,11 @@
 package edu.co.escuelaing.httpserver;
 
-import com.sun.deploy.net.HttpRequest;
-import com.sun.deploy.net.HttpResponse;
 
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+/**
+ * @author Luis Benavidez con modificacion de Guillermo Castro
+ * */
 public interface Handler<T> {
     public T Handle(String path, HttpRequest req, HttpResponse res);
 

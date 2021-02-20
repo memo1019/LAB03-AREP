@@ -1,23 +1,24 @@
 package edu.co.escuelaing.nanosparkweb.demo;
 
-import java.sql.SQLException;
+import edu.co.escuelaing.Persistencia.ConexionJDBCBaseDeDatos;
+import edu.co.escuelaing.entidades.Busqueda;
+/**
+ * @author Luis Benavidez con modificacion de Guillermo Castro
+ * */
 
 import static edu.co.escuelaing.nanosparkweb.NanoSpark.*;
 public class NanoSparkWebDemo {
 
-    public static void main(String [] args ) throws SQLException {
-        get("/hello",(req,res)->
-                "<!DOCTYPE html>\n"
-                + "<html>\n"
-                + "<head>\n"
-                + "<meta charset=\"UTF-8\">\n"
-                + "<title>Title of the document</title>\n"
-                + "</head>\n"
-                + "<body>\n"
-                + "<h1>Get from NanoSpark using lambda function</h1>\n"
-                + "</body>\n"
-                + "</html>\n");
-
+    public static void main(String [] args )  {
+        get("/Busqueda",(req , res) -> Datos());
         startServer();
     }
+    public static String Datos(){
+        String list = "";
+        for (Busqueda c: ConexionJDBCBaseDeDatos.getInstance().Obtener()){
+            list += c.getNombre()+"#"+c.getEdad()+"%";
+        }
+        return list;
+    }
+
 }

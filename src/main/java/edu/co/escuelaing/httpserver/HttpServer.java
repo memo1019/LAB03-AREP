@@ -1,16 +1,18 @@
 package edu.co.escuelaing.httpserver;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import edu.co.escuelaing.Persistencia.ConexionJDBCBaseDeDatos;
+
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * @author Luis Benavidez con modificacion de Guillermo Castro
+ * */
 public class HttpServer {
     private Map<String, Handler<String>> Handlers =new HashMap();
+    private final ResReqStatic ResReqStatic = new ResReqStatic();
 
     public HttpServer(){
         super();
@@ -49,6 +51,14 @@ public class HttpServer {
                 if(!pathRead){
                     path=inputLine.split(" ")[1];
                     System.out.println("Path read : "+path);
+                    if (path.contains("%22")){
+
+                        String name = path.split("%22")[1].split("!")[0];
+
+                        int num = Integer.parseInt(path.split("%22")[1].split("!")[1]);
+
+                        ConexionJDBCBaseDeDatos.getInstance().Insertar(name,num);
+                    }
                     pathRead=true;
                 }
                 System.out.println("Recibí: " + inputLine);
@@ -56,16 +66,42 @@ public class HttpServer {
                     break;
                 }
             }
-            String prefix= "/Apps";
-            String sufix= "/hello";
-            if(Handlers.containsKey(prefix)){
-                System.out.println("Using handler for: "+prefix);
-                out.println(getDefaultOkOutputHeader()+Handlers.get(prefix).Handle(sufix,null,null));
-
+            if(path.contains("/Apps")) {
+                String sufix = path.split("/")[2];
+                out.println(Handlers.get("/Apps").Handle("/" + sufix, null, null));
+            }else if (path.contains("/escuelaing")){
+                ResReqStatic.setCurrentDir("/");
+                String resource = null;
+                String type = null;
+                if(path.contains(".html")){
+                    resource = "operacion.html";
+                    type = "html";
+                }
+                if (path.contains(".css")){
+                    resource = "style.css";
+                    type = "css";
+                }
+                if (path.contains(".js")){
+                    resource = "Busqueda.js";
+                    type = "javascript";
+                }
+                if (path.contains(".png")) {
+                    try {
+                        ResReqStatic.getWebFile(clientSocket,resource,0);
+                    }catch(FileNotFoundException e){
+                        out.println(getDefaultOkOutput());
+                    }
+                }
+                if (resource != null){
+                    ResReqStatic.getWebFile(clientSocket,resource,type)  ;
+                }else{
+                    out.println(getDefaultOkOutput());
+                }
             }else{
                 out.println(getDefaultOkOutput());
-
             }
+
+
             out.close();
             in.close();
             clientSocket.close();
@@ -73,12 +109,6 @@ public class HttpServer {
         serverSocket.close();
     }
 
-    private String getDefaultOkOutputHeader(){
-        return "HTTP/1.1 200 OK\r\n"
-                + "Content-Type: text/html\r\n"
-                + "\r\n";
-
-    }
     private String getDefaultOkOutput(){
         return "HTTP/1.1 200 OK\r\n"
                 + "Content-Type: text/html\r\n"
